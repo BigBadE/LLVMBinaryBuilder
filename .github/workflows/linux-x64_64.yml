@@ -18,7 +18,7 @@ jobs:
         submodules: true
     - name: Setup CMake
       shell: bash
-      run: mkdir target && cd target && cd .. && cmake .
+      run: mkdir target && cd target && cd .. && cmake llvm
     - name: Build LLVM
       shell: bash
       run: cd ../target && cmake --build . && cmake --build . --target install
