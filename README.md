@@ -12,3 +12,5 @@ Platforms:
 - MacOS x86_64
 - MacOS ARM (M1)
 - WebAssembly
+
+WebAssembly isn't working right now
