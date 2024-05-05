@@ -21,7 +21,7 @@ jobs:
       run: mkdir target && cd target && cmake -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
     - name: Zip LLVM
       shell: bash
-      run: zip -r target.zip target 
+      run: zip -r target.zip target/bin target/include target/lib
     - name: Publish Build
       uses: shogo82148/actions-upload-release-asset@v1
       with:
