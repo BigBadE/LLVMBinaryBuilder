@@ -16,12 +16,9 @@ jobs:
       with:
         repository: 'llvm/llvm-project'
         submodules: true
-    - name: Setup CMake
-      shell: bash
-      run: mkdir target && cd target && cd .. && cmake -DCMAKE_BUILD_TYPE=Release llvm
     - name: Build LLVM
       shell: bash
-      run: cd target && cmake --build . && cmake --build . --target install
+      run: mkdir target && cd target && cd .. && cmake -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build . && cmake --build . --target install
     - name: Publish Build
       uses: shogo82148/actions-upload-release-asset@v1
       with:
