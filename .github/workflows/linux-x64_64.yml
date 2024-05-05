@@ -18,7 +18,7 @@ jobs:
         submodules: true
     - name: Setup CMake
       shell: bash
-      run: mkdir target && cd target && cd .. && cmake llvm
+      run: mkdir target && cd target && cd .. && cmake -DCMAKE_BUILD_TYPE=Release llvm
     - name: Build LLVM
       shell: bash
       run: cd ../target && cmake -DCMAKE_BUILD_TYPE=Release --build . && cmake -DCMAKE_BUILD_TYPE=Release --build . --target install
