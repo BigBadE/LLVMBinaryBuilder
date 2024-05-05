@@ -19,10 +19,13 @@ jobs:
     - name: Build LLVM
       shell: bash
       run: mkdir target && cd target && cmake -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
+    - name: Zip LLVM
+      shell: bash
+      run: zip -r target.zip target 
     - name: Publish Build
       uses: shogo82148/actions-upload-release-asset@v1
       with:
         upload_url: https://uploads.github.com/repos/BigBadE/LLVMBinaryBuilder/releases/154278535/assets
-        asset_path: target
-        asset_name: Linux-x86_64
+        asset_path: target.zip
+        asset_name: Linux-x86_64.zip
         overwrite: true
