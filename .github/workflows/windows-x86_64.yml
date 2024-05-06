@@ -21,7 +21,7 @@ jobs:
       run: mkdir target && cd target && cmake -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
     - name: Debug
       shell: bash
-      run cd target && ls && cd bin
+      run: cd target && ls && cd bin
     - name: Zip LLVM
       shell: bash
       run: powershell "Compress-Archive -Path "target/bin", "target/include", "target/lib" -DestinationPath "target.zip""
