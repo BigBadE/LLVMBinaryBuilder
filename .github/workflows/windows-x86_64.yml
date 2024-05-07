@@ -18,7 +18,7 @@ jobs:
         submodules: true
     - name: Build LLVM
       shell: bash
-      run: mkdir target && cd target && cmake -DCMAKE_SYSTEM_NAME=Generic -DLLVM_HOST_TRIPLE=x86_64-pc-windows -DLLVM_TARGETS_TO_BUILD=x86_64 -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
+      run: mkdir target && cd target && cmake -DCMAKE_SYSTEM_NAME=Generic -DLLVM_HOST_TRIPLE=x86_64-pc-windows -DLLVM_TARGETS_TO_BUILD=X86_64 -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
     - name: Zip LLVM
       shell: bash
       run: zip -r target.zip target/bin target/include target/lib
