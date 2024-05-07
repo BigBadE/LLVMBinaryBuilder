@@ -18,7 +18,7 @@ jobs:
         submodules: true
     - name: Build LLVM
       shell: bash
-      run: mkdir target && cd target && cmake -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
+      run: mkdir target && cd target && cmake -DBUILD_SHARED_LIBS=On -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
     - name: Debug
       shell: bash
       run: cd target && ls && cd bin
