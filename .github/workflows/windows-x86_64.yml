@@ -18,13 +18,10 @@ jobs:
         submodules: true
     - name: Build LLVM
       shell: bash
-      run: mkdir target && cd target && cmake -DLLVM_ENABLE_PROJECTS='clang' -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
-    - name: Print bins
-      shell: bash
-      run: cd target/bin && ls
+      run: mkdir target && cd target && cmake -DLLVM_ENABLE_PROJECTS='lld' -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
     - name: Zip LLVM
       shell: bash
-      run: 7z a -y target.zip target/utils target/bin target/include target/lib
+      run: 7z a -y target.zip target/utils target/bin target/include
     - name: Publish Build
       uses: shogo82148/actions-upload-release-asset@v1
       with:
