@@ -24,7 +24,7 @@ jobs:
       run: cd target/tools && ls
     - name: Zip LLVM
       shell: bash
-      run: 7z a -y target.zip target/lib target/tools/llvm-config.exe target/include
+      run: 7z a -y target.zip target/lib target/tools/llvm-config target/include
     - name: Publish Build
       uses: shogo82148/actions-upload-release-asset@v1
       with:
