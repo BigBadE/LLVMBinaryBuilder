@@ -18,13 +18,13 @@ jobs:
         submodules: true
     - name: Build LLVM
       shell: bash
-      run: mkdir target && cd target && cmake -DLLVM_ENABLE_PROJECTS=lld -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
+      run: mkdir target && cd target && cmake -DLLVM_ENABLE_PROJECTS=lld -DCMAKE_BUILD_TYPE=Release ../llvm && cmake -DCMAKE_INSTALL_PREFIX=%GITHUB_WORKSPACE% --build . --target install
     - name: Test
       shell: bash
-      run: cd target/tools && ls
+      run: cd target/bin && ls
     - name: Zip LLVM
       shell: bash
-      run: 7z a -y target.zip target/lib target/tools/llvm-config target/include
+      run: 7z a -y target.zip target/lib target/bin target/include
     - name: Publish Build
       uses: shogo82148/actions-upload-release-asset@v1
       with:
