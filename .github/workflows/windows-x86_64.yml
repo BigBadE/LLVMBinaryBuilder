@@ -18,7 +18,7 @@ jobs:
         submodules: true
     - name: Build LLVM
       shell: bash
-      run: mkdir target && cd target && cmake -DLLVM_ENABLE_PROJECTS=lld -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=%GITHUB_WORKSPACE%  ../llvm && cmake --build . --target install
+      run: mkdir target && cd target && cmake -DLLVM_ENABLE_PROJECTS=lld -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=bin  ../llvm && cmake --build . --target install
     - name: Test
       shell: bash
       run: cd target && ls && cd bin && ls
