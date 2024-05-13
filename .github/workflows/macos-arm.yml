@@ -18,7 +18,7 @@ jobs:
         submodules: true
     - name: Build LLVM
       shell: bash
-      run: mkdir target && cd target && cmake -DCMAKE_BUILD_TYPE=Release ../llvm && cmake --build .
+      run: mkdir target && cd target && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=. ../llvm && cmake --build . --target install
     - name: Zip LLVM
       shell: bash
       run: zip -r target.zip target/bin target/include target/lib
