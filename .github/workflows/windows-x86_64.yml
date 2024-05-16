@@ -19,7 +19,7 @@ jobs:
     - uses: ilammy/msvc-dev-cmd@v1
     - name: Build LLVM
       shell: bash
-      run: mkdir target && cd target && cmake -G "NMake Makefiles" -DLLVM_ENABLE_PROJECTS=lld -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=. ../llvm && nmake install
+      run: mkdir target && cd target && cmake -G "Visual Studio 2022" -DLLVM_ENABLE_PROJECTS=lld -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=. ../llvm && nmake install
     - name: Zip LLVM
       shell: bash
       run: 7z a -y target.zip target/lib target/bin/llvm-config.exe target/include
