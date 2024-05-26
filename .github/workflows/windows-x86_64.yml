@@ -27,6 +27,6 @@ jobs:
       uses: shogo82148/actions-upload-release-asset@v1
       with:
         upload_url: https://uploads.github.com/repos/BigBadE/LLVMBinaryBuilder/releases/154278535/assets
-        asset_path: target/target.zip
+        asset_path: target.zip
         asset_name: Windows-x86_64.zip
         overwrite: true
