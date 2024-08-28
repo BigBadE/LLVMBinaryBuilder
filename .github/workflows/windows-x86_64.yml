@@ -17,6 +17,9 @@ jobs:
         repository: 'rust-lang/llvm-project'
         submodules: true
     - uses: ilammy/msvc-dev-cmd@v1
+    - name: Test
+      shell: bash
+      run: cd .. && ls
     - name: Build LLVM
       shell: bash
       run: mkdir target && cd target && cmake -G "Visual Studio 17 2022" -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX=. -DLLVM_ENABLE_TERMINFO=OFF -DLLVM_ENABLE_ZLIB=OFF -DLLVM_INCLUDE_BENCHMARKS=OFF -DLLVM_INCLUDE_DOCS=OFF -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_GO_TESTS=OFF -DLLVM_INCLUDE_RUNTIMES=OFF -DLLVM_INCLUDE_TESTS=OFF -DLLVM_INCLUDE_UTILS=OFF ../llvm-project && cmake --build . --target install --config MinSizeRel
