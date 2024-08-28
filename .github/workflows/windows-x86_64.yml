@@ -14,8 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        repository: 'llvm/llvm-project'
-        ref: '3b5b5c1ec4a3095ab096dd780e84d7ab81f3d7ff'
+        repository: 'rust-lang/llvm-project'
         submodules: true
     - uses: ilammy/msvc-dev-cmd@v1
     - name: Build LLVM
