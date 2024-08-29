@@ -23,10 +23,7 @@ jobs:
       run: ls
     - name: Build LLVM
       shell: bash
-      run: mkdir target && cd target && cmake -G "Visual Studio 17 2022" -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX=. -DLLVM_ENABLE_TERMINFO=OFF -DLLVM_ENABLE_ZLIB=OFF -DLLVM_INCLUDE_BENCHMARKS=OFF -DLLVM_INCLUDE_DOCS=OFF -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_GO_TESTS=OFF -DLLVM_INCLUDE_RUNTIMES=OFF -DLLVM_INCLUDE_TESTS=OFF -DLLVM_INCLUDE_UTILS=OFF ../llvm && cmake --build . --target install --config MinSizeRel
-    - name: Build Clang
-      shell: bash
-      run: cd target && cmake -G "Visual Studio 17 2022" -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX=. ../clang && cmake --build . --target install --config MinSizeRel
+      run: mkdir target && cd target && cmake -G "Visual Studio 17 2022" -DLLVM_ENABLE_PROJECTS='clang;compiler-rt' -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX=. -DLLVM_ENABLE_TERMINFO=OFF -DLLVM_ENABLE_ZLIB=OFF -DLLVM_INCLUDE_BENCHMARKS=OFF -DLLVM_INCLUDE_DOCS=OFF -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_GO_TESTS=OFF -DLLVM_INCLUDE_RUNTIMES=OFF -DLLVM_INCLUDE_TESTS=OFF -DLLVM_INCLUDE_UTILS=OFF ../llvm && cmake --build . --target install --config MinSizeRel
     - name: Zip LLVM
       shell: bash
       run: 7z a -y target.zip target/lib target/bin target/include
