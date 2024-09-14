@@ -14,19 +14,15 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        repository: 'rust-lang/llvm-project'
-        ref: '2b259b3c201f939f2ed8d2fb0a0e9b37dd2d1321'
+        repository: 'llvm/llvm-project'
         submodules: true
     - uses: ilammy/msvc-dev-cmd@v1
-    - name: Test
-      shell: bash
-      run: ls
     - name: Build LLVM
       shell: bash
-      run: mkdir target && cd target && cmake -G "Visual Studio 17 2022" -DLLVM_ENABLE_PROJECTS='clang;lld' -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX=. -DLLVM_ENABLE_TERMINFO=OFF -DLLVM_ENABLE_ZLIB=OFF -DLLVM_INCLUDE_BENCHMARKS=OFF -DLLVM_INCLUDE_DOCS=OFF -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_GO_TESTS=OFF -DLLVM_INCLUDE_RUNTIMES=OFF -DLLVM_INCLUDE_TESTS=OFF -DLLVM_INCLUDE_UTILS=OFF ../llvm && cmake --build . --target install --config MinSizeRel
+      run: mkdir target && cd target && cmake -G "Visual Studio 17 2022" -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_INSTALL_PREFIX=. -DLLVM_ENABLE_TERMINFO=OFF -DLLVM_ENABLE_ZLIB=OFF -DLLVM_INCLUDE_BENCHMARKS=OFF -DLLVM_INCLUDE_DOCS=OFF -DLLVM_INCLUDE_EXAMPLES=OFF -DLLVM_INCLUDE_GO_TESTS=OFF -DLLVM_INCLUDE_RUNTIMES=OFF -DLLVM_INCLUDE_TESTS=OFF -DLLVM_INCLUDE_UTILS=OFF ../llvm && cmake --build . --target install --config MinSizeRel
     - name: Zip LLVM
       shell: bash
-      run: 7z a -y target.zip target/lib target/bin target/include
+      run: 7z a -y target.zip target/lib target/bin/llvm-config.exe target/include
     - name: Publish Build
       uses: shogo82148/actions-upload-release-asset@v1
       with:
