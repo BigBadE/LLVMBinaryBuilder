@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
         repository: 'llvm/llvm-project'
-        ref: '461274b81d8641eab64d494accddc81d7db8a09e'
+        ref: '26a1d6601d727a96f4301d0d8647b5a42760ae0c'
         submodules: true
     - uses: ilammy/msvc-dev-cmd@v1
     - name: Build LLVM
