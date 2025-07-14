@@ -15,6 +15,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
         repository: 'llvm/llvm-project'
+        ref: 'release/18.x'
         submodules: true
     - name: Build LLVM
       shell: bash
